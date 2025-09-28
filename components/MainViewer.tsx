@@ -147,7 +147,7 @@ export const MainViewer: React.FC<{
     if (!job || !job.results[currentResultIndex]) return;
     const link = document.createElement('a');
     link.href = job.results[currentResultIndex].imageData;
-    link.download = `bananascan-${job.id}-${currentResultIndex + 1}.png`;
+    link.download = `objectlens-${job.id}-${currentResultIndex + 1}.png`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -191,7 +191,7 @@ export const MainViewer: React.FC<{
         const url = URL.createObjectURL(blob);
         const link = document.createElement('a');
         link.href = url;
-        link.download = `bananascan-${job.id}-animation.gif`;
+        link.download = `objectlens-${job.id}-animation.gif`;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);

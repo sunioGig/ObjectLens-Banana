@@ -142,7 +142,7 @@ const HelpModal: React.FC<{
     <div onClick={onClose} className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 cursor-pointer">
       <div onClick={(e) => e.stopPropagation()} className="bg-white rounded shadow-xl p-8 w-full max-w-lg border border-black cursor-auto">
         <div className="space-y-4">
-          <h1 className="text-xl tracking-wider uppercase text-black">BANANA SCAN v0.1</h1>
+          <h1 className="text-xl tracking-wider uppercase text-black">ObjectLens v0.1</h1>
           <p className="text-sm text-gray-800">
             This prototype lets you capture things in your physical world and visualize them in new ways. Use your camera or upload an image. <a href="https://ai.studio/apps/drive/1sxJWocoemd8kCp9NqsThpAqOcS9gi8DV" target="_blank" rel="noopener noreferrer" className="underline hover:text-black">Open-source code is available here</a>.
           </p>
@@ -244,13 +244,13 @@ const App: React.FC = () => {
   const headerContent = (
     <>
       <div className="flex items-center space-x-3">
-          <h1 className="text-xl tracking-wider uppercase text-black">Banana Scan</h1>
+          <h1 className="text-xl tracking-wider uppercase text-black">ObjectLens</h1>
       </div>
       <div className="flex items-center space-x-4">
         <button onClick={resetApp} className="text-black hover:text-gray-600 transition" aria-label="Reset application">
           <RotateCcw size={18} />
         </button>
-        <button onClick={() => setIsHelpOpen(true)} className="text-black hover:text-gray-600 transition" aria-label="About Banana Scan">
+        <button onClick={() => setIsHelpOpen(true)} className="text-black hover:text-gray-600 transition" aria-label="About ObjectLens">
               <HelpCircle size={18} />
         </button>
       </div>

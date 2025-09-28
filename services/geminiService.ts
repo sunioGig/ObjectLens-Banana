@@ -1,16 +1,12 @@
-
 import { GoogleGenAI, Modality } from "@google/genai";
 import type { GenerateContentResponse } from "@google/genai";
 
-const API_KEY = process.env.API_KEY;
-
-if (!API_KEY) {
-  throw new Error("API_KEY environment variable not set");
-}
-
-const ai = new GoogleGenAI({ apiKey: API_KEY });
+// Fix: Per coding guidelines, the API key must be obtained from `process.env.API_KEY`.
+// This resolves the error "Property 'env' does not exist on type 'ImportMeta'".
+const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
 const base64ToInlineData = (base64String: string, mimeType: string) => {
+  // Ensure we only get the data part of the base64 string
   const base64Data = base64String.split(',')[1];
   return {
     inlineData: {
@@ -35,18 +31,21 @@ export const generateProductImage = async (base64Image: string, mimeType: string
       },
     });
 
+    // Find the first image part in the response
     for (const part of response.candidates[0].content.parts) {
-      if (part.inlineData) {
+      if (part.inlineData && part.inlineData.mimeType.startsWith('image/')) {
         const base64ImageBytes = part.inlineData.data;
         const imageMimeType = part.inlineData.mimeType;
         return `data:${imageMimeType};base64,${base64ImageBytes}`;
       }
     }
 
+    // If no image part is found, throw an error.
     throw new Error("No image was generated in the response.");
 
   } catch (error) {
     console.error("Error calling Gemini API:", error);
-    throw new Error("Failed to generate image.");
+    // Pass a more specific error message up to the UI.
+    throw new Error("Failed to generate image. The API call failed.");
   }
 };
