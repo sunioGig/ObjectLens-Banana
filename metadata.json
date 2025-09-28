@@ -1,0 +1,7 @@
+{
+  "name": "ObjectLens",
+  "description": "An application to capture or upload images of objects and generate professional product photography-style shots using AI.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
