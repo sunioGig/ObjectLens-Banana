@@ -3,7 +3,7 @@ import type { GenerateContentResponse } from "@google/genai";
 
 // Fix: Per coding guidelines, the API key must be obtained from `process.env.API_KEY`.
 // This resolves the error "Property 'env' does not exist on type 'ImportMeta'".
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const ai = new GoogleGenAI({ apiKey: process.env.VITE_API_KEY });
 
 const base64ToInlineData = (base64String: string, mimeType: string) => {
   // Ensure we only get the data part of the base64 string
